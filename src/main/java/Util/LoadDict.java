@@ -16,6 +16,10 @@ public class LoadDict {
     private String locPath=null;
     private String evtPath=null;
 
+    static {
+        //这里加载词库,记得在外面引用一下这个类
+    }
+
 	public LoadDict() {
 		try {
 			Properties fileProperty = PropertyUtil.getFilePathProperty();

@@ -6,7 +6,7 @@ import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.splitWord.analysis.DicAnalysis;
 
-import java.util.ArrayList;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -15,27 +15,52 @@ import java.util.regex.Pattern;
  * deal wechat message, if it is a hot, then get a HotMsg, else null
  */
 public class DealMsg {
-    public LoadMap maps;
-    public AddressUtils addressUtil;
+    public MapUtil maps;
+    public AddressUtil addressUtil;
     public DealMsg(){
-        this.maps=new LoadMap();
+        this.maps=new MapUtil();
         LoadDict loadDict=new LoadDict();
         loadDict.init();
-        LoadMap loadMap=new LoadMap();
-        this.addressUtil=new AddressUtils();
+        MapUtil mapUtil =new MapUtil();
+        this.addressUtil=new AddressUtil();
     }
-    public HotMsg filterHotMsg(String message){
+    public HotMsg filterHotMsg(String message,String ip){
         String[]sentences=this.cutSentence(message);
         if(sentences==null)return null;
         int length=sentences.length;
         for(int i=0;i<length;i++){
             Result result=DicAnalysis.parse(sentences[i]);
 //            System.out.println("Result:"+result);
-            List<String> locAndEvtList=haveLocationAndEvent(result);
+            List<String> locAndEvtList=this.maps.haveLocationAndEvent(result);
             if(locAndEvtList!=null&&locAndEvtList.size()==2){
                 HotMsg hotMsg=new HotMsg(message);
-                this.trackLocation(locAndEvtList.get(0),hotMsg);
-                this.trackEvent(locAndEvtList.get(1),hotMsg);
+                String location=locAndEvtList.get(0);
+                String event=locAndEvtList.get(1);
+                String upperLocation=this.maps.trackLocation(location);
+                if(upperLocation==null){
+                    hotMsg.setMsg_province(locAndEvtList.get(0));
+                }else{
+                    String[]uppers=upperLocation.split(",");
+                    if(uppers.length==1){
+                        hotMsg.setMsg_province(uppers[0]);
+                        hotMsg.setMsg_city(location);
+                    }else{
+                        hotMsg.setMsg_district(location);
+                        hotMsg.setMsg_city(uppers[0]);
+                        hotMsg.setMsg_province(uppers[1]);
+                    }
+                }
+                String eventClass=this.maps.trackEvent(event);
+                hotMsg.setEvt_class(eventClass);
+                hotMsg.setEvt_word(event);
+                try {
+                    List<String> address=this.addressUtil.getAddresses(ip,"utf-8");
+                    hotMsg.setMsg_send_province(address.get(0));
+                    hotMsg.setMsg_send_city(address.get(1));
+                    hotMsg.setMsg_send_district(address.get(2));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 //取得message的ip地址
                 return hotMsg;
             }
@@ -47,7 +72,7 @@ public class DealMsg {
      * get the location and event keyword for a message
      * @param result: segmentation of a message
      * @return true if have event and location keyword else return false
-     */
+     *//*
     private List<String> haveLocationAndEvent(Result result) {
         List<Term> termList=result.getTerms();
         String locKeyword=null;
@@ -68,7 +93,7 @@ public class DealMsg {
             return resultList;
         }
         return null;
-    }
+    }*/
 
 
     /**
@@ -88,7 +113,7 @@ public class DealMsg {
      * get the superior for location e.g. tiananmen->beijing
      * @param location
      * @return
-     */
+     *//*
     public void trackLocation(String location,HotMsg hotMsg){
         if(!this.maps.getLocation().containsKey(location)){
             System.err.println("Error:DealMsg.java/Fun trackLocation/line 73");
@@ -108,13 +133,13 @@ public class DealMsg {
                 }
             }
         }
-    }
+    }*/
 
     /**
      * get the class for an event e.g. earthquake->natural disaster
      * @param evtWord
      * @param hotMsg
-     */
+     *//*
     public void trackEvent(String evtWord,HotMsg hotMsg){
         if(!this.maps.getEvent().containsKey(evtWord)){
             System.err.println("Error:DealMsg.java/Funt trackEvent/line 93");
@@ -123,6 +148,6 @@ public class DealMsg {
             hotMsg.setEvt_word(evtWord);
             hotMsg.setEvt_class(evtClass);
         }
-    }
+    }*/
 
 }

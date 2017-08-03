@@ -18,12 +18,12 @@ import java.util.List;
  * @author:heguanhua E-mail:37809893@qq.com
  * @date：Nov 14, 2012 6:38:25 PM
  */
-public class AddressUtils {
+public class AddressUtil {
 	/**
 	 *
 	 * @param content
 	 *            请求的参数 格式为：name=xxx&pwd=xxx
-	 * @param encoding
+	 * @param encodingString
 	 *            服务器端请求编码。如GBK,UTF-8等
 	 * @return
 	 * @throws UnsupportedEncodingException
@@ -206,12 +206,12 @@ public class AddressUtils {
 
 	// 测试
 	public static void main(String[] args) {
-		AddressUtils addressUtils = new AddressUtils();
+		AddressUtil addressUtil = new AddressUtil();
 		// 测试ip 219.136.134.157 中国=华南=广东省=广州市=越秀区=电信
 		String ip = "125.70.11.136";
 		List<String> address = null;
 		try {
-			address = addressUtils.getAddresses("ip=" + ip, "utf-8");
+			address = addressUtil.getAddresses("ip=" + ip, "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
