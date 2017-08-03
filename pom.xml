@@ -7,6 +7,13 @@
     <groupId>com.hotmsg</groupId>
     <artifactId>FilterMsg</artifactId>
     <version>1.0-SNAPSHOT</version>
+    
+    <properties>  
+    	<dict.path>UTF-8</dict.path>  
+    	<evt.path>9.3.14.v20161028</evt.path>  
+    	<dict.code.path>4.1.3.RELEASE</dict.code.path>  
+    	<evt.code.path>6.3.0</evt.code.path>  
+	</properties> 
 
     <dependencies>
         <dependency>

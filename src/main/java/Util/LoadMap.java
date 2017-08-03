@@ -1,24 +1,27 @@
-package Service;
+package Util;
 
 import java.io.*;
 import java.util.*;
 
 /**
- * 管理地区和事件
+ * manage location and event, including: location  event and location code ,event code
  */
-public class Common {
+public class LoadMap {
 
-    public HashMap<String,String> location=null;
-    public HashMap<String,String> event=null;
-    public HashMap<String,Integer> hotWordMap =null;
-
+    public static HashMap<String,String> location=null;
+    public static HashMap<String,String> event=null;
+    public static HashMap<String,Integer> hotWordMap =null;
+    public static HashMap<String,Integer>locationAndCode=null;
+    public static HashMap<String,String> eventAndCode=null;
+    
+     
     /**
      * 更新热词的频率信息
      * @param keyword:要更新的热词
      */
     public void updateHotWordMap(String keyword){
         HashMap<String,Integer>hotWordMap=this.getHotWordMap();
-        this.hotWordMap =new HashMap<String,Integer>();
+        LoadMap.hotWordMap =new HashMap<String,Integer>();
         if(hotWordMap.containsKey(keyword)){
             int value= hotWordMap.get(keyword);
             hotWordMap.put(keyword,value+1);
@@ -30,11 +33,11 @@ public class Common {
      * 创建hotwordMap
      * @return
      */
-    public HashMap<String,Integer> getHotWordMap(){
-        if(this.hotWordMap==null){
-            this.hotWordMap=new HashMap<String, Integer>();
+    public synchronized static HashMap<String,Integer> getHotWordMap(){
+        if(LoadMap.hotWordMap==null){
+            LoadMap.hotWordMap=new HashMap<String, Integer>();
         }
-        return this.hotWordMap;
+        return LoadMap.hotWordMap;
     }
 
     /**
@@ -77,19 +80,18 @@ public class Common {
      * 获取地点列表（省市县三级）
      * @return
      */
-    public Map getLocation() {
-        if(location==null){
+    public synchronized static Map<String,String> getLocation() {
+        if(LoadMap.location==null){
             location=new HashMap<String,String>();
-            BufferedReader bufferedReader=null;
+            //获取location.csv的inputstream
+            InputStream locInputStream=LoadMap.class.getResourceAsStream(PropertyUtil.getFilePathProperty().getProperty("LOCPATH"));
+            InputStreamReader reader= null;
             try {
-                bufferedReader=new BufferedReader(new InputStreamReader(new FileInputStream("./location.csv"),"GBK"));
-            } catch (FileNotFoundException e) {
-                System.err.println("Exception:commom.java/line 18");
-                e.printStackTrace();
+                reader = new InputStreamReader(locInputStream,"gbk");
             } catch (UnsupportedEncodingException e) {
-                System.err.println("Exception:commom.java/line 18");
                 e.printStackTrace();
             }
+            BufferedReader bufferedReader=new BufferedReader(reader);
             String line=null;
             try {
                 while((line=bufferedReader.readLine())!=null){
@@ -122,13 +124,13 @@ public class Common {
      * @return return true if add successfully else return false;
      */
     public boolean addNewLocation(String location,String cityName,String provinceName){
-        if(this.getLocation().containsKey(location)) return false;
+        if(LoadMap.getLocation().containsKey(location)) return false;
         else{
             if(cityName==null){
-                this.getLocation().put(location,provinceName);
+                LoadMap.getLocation().put(location,provinceName);
             }else{
-                if(this.getLocation().containsKey(location))
-                    this.getLocation().put(location,cityName+","+provinceName);
+                if(LoadMap.getLocation().containsKey(location))
+                    LoadMap.getLocation().put(location,cityName+","+provinceName);
             }
             return true;
         }
@@ -152,11 +154,11 @@ public class Common {
      * @return
      */
     public boolean updateLocation(String locationName,String cityName,String provinceName){
-        if (this.getLocation().containsKey(locationName)) {
+        if (LoadMap.getLocation().containsKey(locationName)) {
             if(cityName==null)
-                this.getLocation().put(locationName,provinceName);
+                LoadMap.getLocation().put(locationName,provinceName);
             else
-                this.getLocation().put(locationName,cityName+","+provinceName);
+                LoadMap.getLocation().put(locationName,cityName+","+provinceName);
             return true;
         }else{
             System.err.println("This locationName doesn't exist!");
@@ -177,25 +179,24 @@ public class Common {
      * 获取事件列表
      * @return
      */
-    public Map getEvent() {
-        if(this.event==null){
-            this.event=new HashMap<String,String>();
-            BufferedReader bufferedReader=null;
+    public synchronized static Map<String,String> getEvent() {
+        if(LoadMap.event==null){
+            LoadMap.event=new HashMap<String,String>();
+            //获取location.csv的inputstream
+            InputStream locInputStream=LoadMap.class.getResourceAsStream(PropertyUtil.getFilePathProperty().getProperty("EVTPATH"));
+            InputStreamReader reader= null;
             try {
-                bufferedReader=new BufferedReader(new InputStreamReader(new FileInputStream("./event.csv"),"GBK"));
+                reader = new InputStreamReader(locInputStream,"gbk");
             } catch (UnsupportedEncodingException e) {
-                System.err.println("Exception:commom.java/line 51");
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                System.err.println("Exception:commom.java/line 51");
                 e.printStackTrace();
             }
+            BufferedReader bufferedReader=new BufferedReader(reader);
             String line=null;
             try {
                 while((line=bufferedReader.readLine())!=null){
                     String[]line_contents=line.split(",");
                     if(line_contents.length==2)
-                        this.event.put(line_contents[1],line_contents[0]);
+                        LoadMap.event.put(line_contents[1],line_contents[0]);
                     else
                         System.err.println("Error:common.java/line64");
                 }
@@ -204,7 +205,7 @@ public class Common {
                 e.printStackTrace();
             }
         }
-        return this.event;
+        return LoadMap.event;
     }
 
     /**
@@ -214,11 +215,11 @@ public class Common {
      * @return: return true if add successfully else return false;
      */
     public boolean addNewEvent(String eventName,String eventClass){
-        if(this.event.containsKey(eventName)){
+        if(LoadMap.event.containsKey(eventName)){
             System.err.println("This keyword for event has already existed!");
             return false;
         }
-        else this.event.put(eventName,eventClass);
+        else LoadMap.event.put(eventName,eventClass);
         return true;
     }
 
@@ -229,11 +230,65 @@ public class Common {
      * @return: return true if update successfully else return false
      */
     public boolean updataEvent(String eventName,String eventClass){
-        if(!this.event.containsKey(eventName)){
+        if(!LoadMap.event.containsKey(eventName)){
             System.err.println("This keyword does't exist!");
             return false;
-        }else this.event.put(eventName,eventClass);
+        }else LoadMap.event.put(eventName,eventClass);
         return true;
     }
 
+    public synchronized static Map<String,Integer> loadLocationCode() {
+    	if(LoadMap.locationAndCode==null) {
+    		LoadMap.locationAndCode=new HashMap<String,Integer>();
+    		InputStream locCodeInputStream=LoadMap.class.getResourceAsStream(PropertyUtil.getFilePathProperty().getProperty("LOCCODEJPATH"));
+    		InputStreamReader reader= null;
+            try {
+                reader = new InputStreamReader(locCodeInputStream,"gbk");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            BufferedReader bufferedReader=new BufferedReader(reader);
+            String line=null;
+            try {
+				while((line=bufferedReader.readLine())!=null) {
+					String[]line_contents=line.split(",");
+					LoadMap.locationAndCode.put(line_contents[1],Integer.parseInt(line_contents[0]));// 北京市,10000
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
+    	}
+    	return LoadMap.locationAndCode;
+    }
+    
+    /**
+     *  load event and code to Map：eventAndCode 
+     * @return Map<String,String> e.g event keyword, code
+     */
+    public synchronized static Map<String,String> loadEventCode() {
+    	if(LoadMap.eventAndCode==null) {
+    		LoadMap.eventAndCode=new HashMap<String,String>();
+    		InputStream locCodeInputStream=LoadMap.class.getResourceAsStream(PropertyUtil.getFilePathProperty().getProperty("EVTCODEPATH"));
+    		InputStreamReader reader= null;
+            try {
+                reader = new InputStreamReader(locCodeInputStream,"gbk");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            BufferedReader bufferedReader=new BufferedReader(reader);
+            String line=null;
+            try {
+				while((line=bufferedReader.readLine())!=null) {
+					String[]line_contents=line.split(",");
+					LoadMap.locationAndCode.put(line_contents[1],Integer.parseInt(line_contents[0]));// 水旱灾害,10000
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            
+    	}
+    	return LoadMap.eventAndCode;
+    }
 }

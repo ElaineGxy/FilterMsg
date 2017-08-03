@@ -1,19 +1,34 @@
-
+package Util;
 import java.io.*;
+import java.util.Properties;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 /**
  * 用于操作用户自定义词典，地点词汇表以及时间词汇表
  */
-public class UserDict {
+public class LoadDict {
+	private final static Logger logger = LoggerFactory.getLogger(LoadDict.class);
 	private File dictFile=null;
 	private FileWriter fileWriter=null;
 	private BufferedWriter bufferedWriter=null;
-    private String dictPath="/library/userLibrary.dic";
-    private String locPath="library/location.csv";
-    private String evtPath="library/event.csv";
+    private String dictPath=null;
+    private String locPath=null;
+    private String evtPath=null;
 
-    public UserDict(){
-        this.dictPath=this.getClass().getResource(this.dictPath).getPath();
+	public LoadDict() {
+		try {
+			Properties fileProperty = PropertyUtil.getFilePathProperty();
+			if(fileProperty==null) {
+				logger.info("FileProperty is null");
+			}
+			this.dictPath= fileProperty.getProperty("DICPATH");
+			this.evtPath = fileProperty.getProperty("EVTPATH");
+			this.locPath = fileProperty.getProperty("LOCPATH");
+		} catch (Throwable e) {
+			throw new ExceptionInInitializerError(e);
+		}
+		this.dictPath=this.getClass().getResource(this.dictPath).getPath();
         dictFile=new File(dictPath);
         try {
             fileWriter=new FileWriter(dictFile);
@@ -22,8 +37,16 @@ public class UserDict {
             e.printStackTrace();
         }
         bufferedWriter=new BufferedWriter(fileWriter);
-    }
+	}
+	
+	public void init() {
+		this.addEvtToDict();
+		this.addLocationToDist();
+	}
 
+	/**
+	 * 将location中的词汇加入到用户自定义词典中，同时生成locationMap
+	 */
     public void addLocationToDist(){
         InputStream locInputStream=this.getClass().getResourceAsStream(this.locPath);
         InputStreamReader reader= null;
@@ -38,6 +61,7 @@ public class UserDict {
             while((line=bufferedReader.readLine())!=null){
                 String[]line_content=line.split(",");
                 bufferedWriter.write(line_content[0]+"\tlocation\t10240");
+                bufferedWriter.newLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +76,6 @@ public class UserDict {
     }
     public void addEvtToDict(){
         InputStream evtInputStream=this.getClass().getResourceAsStream(this.evtPath);
-        //        File customFile = new File(classLoader.getResource(this.locPath).getFile());
         InputStreamReader reader= null;
         try {
             reader = new InputStreamReader(evtInputStream,"gbk");
@@ -65,6 +88,7 @@ public class UserDict {
             while((line=bufferedReader.readLine())!=null){
                 String[]line_content=line.split(",");
                 bufferedWriter.write(line_content[1]+"\tevent\t10240");
+                bufferedWriter.newLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
