@@ -1,12 +1,12 @@
-package Util;
+/*package Util;
 import java.io.*;
 import java.util.Properties;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
-/**
+*//**
  * 用于操作用户自定义词典，地点词汇表以及时间词汇表
- */
+ *//*
 public class LoadDict {
 	private final static Logger logger = LoggerFactory.getLogger(LoadDict.class);
 	private File dictFile=null;
@@ -48,9 +48,9 @@ public class LoadDict {
 		this.addLocationToDist();
 	}
 
-	/**
+	*//**
 	 * 将location中的词汇加入到用户自定义词典中，同时生成locationMap
-	 */
+	 *//*
     public void addLocationToDist(){
         InputStream locInputStream=this.getClass().getResourceAsStream(this.locPath);
         InputStreamReader reader= null;
@@ -104,13 +104,13 @@ public class LoadDict {
             e.printStackTrace();
         }
     }
-    /**
+    *//**
      *灏唚ord娣诲姞鍒拌嚜瀹氫箟璇嶅吀涓�
      * @param word
      * @param label:鐪佷唤锛歭c 浜嬩欢
      * @return
-     */
-    /*public boolean addToDist(String word,String label,int fre){
+     *//*
+    public boolean addToDist(String word,String label,int fre){
         try {
             bufferedWriter.write(word.trim()+"\t"+label+fre+"\n");
             return true;
@@ -118,5 +118,6 @@ public class LoadDict {
             e.printStackTrace();
         }
         return false;
-    }*/
+    }
 }
+*/

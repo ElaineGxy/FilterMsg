@@ -33,6 +33,7 @@ public class AddressUtil {
 		String urlStr = "http://ip.taobao.com/service/getIpInfo.php";
 		// 从http://whois.pconline.com.cn取得IP所在的省市区信息
 		String returnStr = this.getResult(urlStr, content, encodingString);
+		List<String>addressList=null;
 		if (returnStr != null) {
 			// 处理返回的省市区信息
 			// System.out.println(returnStr);
@@ -79,12 +80,12 @@ public class AddressUtil {
 			}
 
 //			System.out.println(country + "=" + area + "=" + region + "=" + city + "=" + county + "=" + isp);
-			List<String>addressList=new ArrayList<String>();
+			addressList=new ArrayList<String>();
 			addressList.add(region);
 			addressList.add(city);
 			addressList.add(county);
 		}
-		return null;
+		return addressList;
 	}
 
 	/**

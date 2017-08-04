@@ -1,5 +1,3 @@
-import java.io.*;
-
 public class testPath {
     public String locPath="library/location.csv";
     public String evtPath="library/event.csv";
