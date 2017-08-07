@@ -1,6 +1,14 @@
 package Entity;
 
+import java.sql.Timestamp;
+
 public class HotMsg {
+	private String  gId;
+	private String content;
+	private Timestamp publishtime;
+	private Long zhId;
+	private Long chatroomId;
+	
     private String msg_content;
     private String msg_province;//一级地域 省份
     private String msg_city;//二级地域 城市
@@ -15,8 +23,48 @@ public class HotMsg {
     private String msg_send_district;
     
     
+    
+    public String getId() {
+		return gId;
+	}
 
-    public HotMsg(String msg_content){
+	public void setId(String id) {
+		this.gId = id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Timestamp getPublishtime() {
+		return publishtime;
+	}
+
+	public void setPublishtime(Timestamp publishtime) {
+		this.publishtime = publishtime;
+	}
+
+	public Long getZhid() {
+		return zhId;
+	}
+
+	public void setZhid(Long zhid) {
+		this.zhId = zhid;
+	}
+
+	public Long getChatroomId() {
+		return chatroomId;
+	}
+
+	public void setChatroomId(long chatroomId) {
+		this.chatroomId = chatroomId;
+	}
+
+	public HotMsg(String msg_content){
         this.msg_content=msg_content;
     }
 

@@ -5,6 +5,7 @@ import org.ansj.splitWord.analysis.DicAnalysis;
 
 import Entity.HotMsg;
 import Util.DealMsg;
+import Util.TimeUtil;
 
 public class MainFun {
 
@@ -37,20 +38,7 @@ public class MainFun {
 					+ hotMsg.getEvt_word()+"sendIp:"+hotMsg.getMsg_send_province());			
 		}else System.out.println("filter out");*/
 		Date date = new Date();
-		int hour = (date.getHours() / 3) * 3 + 2;
-		System.out.println(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.HOUR_OF_DAY, hour); // 控制时
-		calendar.set(Calendar.MINUTE, 59); // 控制分
-		calendar.set(Calendar.SECOND, 00);
-		Date time = calendar.getTime();
-		
-		/*Calendar calendar=Calendar.getInstance();
-		calendar.set(Calendar.HOUR_OF_DAY, 23);
-		calendar.set(Calendar.MINUTE, 59);
-		calendar.set(Calendar.SECOND,59);
-		Date time=calendar.getTime();*/
-		System.out.println(time);
+		System.out.println(TimeUtil.DateToString(date));
 
 	}
 }
