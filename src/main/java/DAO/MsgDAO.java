@@ -25,16 +25,18 @@ public class MsgDAO {
 	 * @param startTime 2017-08-01 00:00:00
 	 * @param endTime 2017-08-01 23:00:00
 	 */
-	public List<String> getMessage(String startTime,String endTime,int count) {
+	public static  List<String> getMessage(String startTime,String endTime,int count) {
+		MppJdbcPool_dbcp.MppJdbcPoolinit();
+		Connection connection = MppJdbcPool_dbcp.getConnection();
 		List<String>msgList=new ArrayList<String>();
 		String sql= "SELECT * FROM tp_wxq_entire WHERE unix_timestamp(m_publish_time) BETWEEN unix_timestamp('"
 				+ startTime
 				+ "') AND unix_timestamp('"
 				+ endTime
 				+ "') AND m_type=1 LIMIT "+count;
-		if(this.connection!=null) {
+		if(connection!=null) {
 			try {
-				PreparedStatement prepareStatement=this.connection.prepareStatement(sql);
+				PreparedStatement prepareStatement=connection.prepareStatement(sql);
 				ResultSet rs = prepareStatement.executeQuery();
 				while (rs.next()) {
 					 String content = rs.getString("m_content");
@@ -57,12 +59,14 @@ public class MsgDAO {
 	 * @param location
 	 * @return
 	 */
-	public List<String> getHotByLoc(String location){
+	public static  List<String> getHotByLoc(String location){
+		MppJdbcPool_dbcp.MppJdbcPoolinit();
+		Connection connection = MppJdbcPool_dbcp.getConnection();
 		List<String>msgList=new ArrayList<String>();
 		String sql= "SELECT * FROM tp_wxq_hot where m_loc like "+location;
-		if(this.connection!=null) {
+		if(connection!=null) {
 			try {
-				PreparedStatement prepareStatement=this.connection.prepareStatement(sql);
+				PreparedStatement prepareStatement=connection.prepareStatement(sql);
 				ResultSet rs = prepareStatement.executeQuery();
 				while (rs.next()) {
 					 String content = rs.getString("m_content");
@@ -85,12 +89,14 @@ public class MsgDAO {
 	 * @param location
 	 * @return
 	 */
-	public List<String> getHotByEvt(String evt){
+	public static List<String> getHotByEvt(String evt){
+		MppJdbcPool_dbcp.MppJdbcPoolinit();
+		Connection connection = MppJdbcPool_dbcp.getConnection();
 		List<String>msgList=new ArrayList<String>();
 		String sql= "SELECT * FROM tp_wxq_hot where m_evt like "+evt;
-		if(this.connection!=null) {
+		if(connection!=null) {
 			try {
-				PreparedStatement prepareStatement=this.connection.prepareStatement(sql);
+				PreparedStatement prepareStatement=connection.prepareStatement(sql);
 				ResultSet rs = prepareStatement.executeQuery();
 				while (rs.next()) {
 					 String content = rs.getString("m_content");
@@ -109,18 +115,20 @@ public class MsgDAO {
 	}
 	
 	/**
-	 * inset hot message
+	 * insert hot message
 	 * @param hotMsg
 	 */
-	public void insertHotMsg(HotMsg hotMsg) {
+	public static void insertHotMsg(HotMsg hotMsg) {
+		MppJdbcPool_dbcp.MppJdbcPoolinit();
+		Connection connection = MppJdbcPool_dbcp.getConnection();
 		String sql="insert into tp_wxq_hot(msg_content,msg_province,msg_city,msg_district,evt_class,"
 				+ "evt_word,msg_ip,msg_send_province,msg_send_city,msg_send_district) values("+hotMsg.getMsg_content()+","
 				+hotMsg.getMsg_province()+","+hotMsg.getMsg_city()+","+hotMsg.getMsg_district()+","+hotMsg.getEvt_class()+","
 				+hotMsg.getEvt_word()+","+hotMsg.getMsg_ip()+","+hotMsg.getMsg_send_province()+","+hotMsg.getMsg_send_city()+","
 				+hotMsg.getMsg_send_district();
-		if(this.connection!=null) {
+		if(connection!=null) {
 			try {
-				PreparedStatement prepareStatement=this.connection.prepareStatement(sql);
+				PreparedStatement prepareStatement=connection.prepareStatement(sql);
 				ResultSet resultSet=prepareStatement.executeQuery();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -128,6 +136,26 @@ public class MsgDAO {
 			}
 		}else {
 			logger.info("connection is null");
+		}
+	}
+	
+	/**
+	 * 将热点消息的表格清空
+	 */
+	public static void clearHotMsg() {
+		MppJdbcPool_dbcp.MppJdbcPoolinit();
+		Connection connection = MppJdbcPool_dbcp.getConnection();
+		String truncateSql="TRUNCATE TABLE tp_wxq_hot";
+		if(connection!=null) {
+			PreparedStatement preparedStatement;
+			try {
+				preparedStatement = connection.prepareStatement(truncateSql);
+				int result=preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				logger.info("Exception: PrepareStatement");
+				e.printStackTrace();
+			}
 		}
 	}
 	

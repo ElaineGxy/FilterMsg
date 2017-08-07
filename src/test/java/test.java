@@ -15,7 +15,7 @@ public class test {
 		DealMsg dealMsg=new DealMsg();
 		for(String msg:msgList) {
 			System.out.println(msg);
-			HotMsg hotMsg=dealMsg.filterHotMsg(msg);
+			HotMsg hotMsg=dealMsg.filterHotMsg(msg,"12");
 			if(hotMsg!=null) {
 				System.out.println("content:"+hotMsg.getMsg_content()+",location:"+hotMsg.getMsg_province()+","+hotMsg.getEvt_class());
 			}
