@@ -25,6 +25,7 @@ public class DealMsg {
 //        this.addressUtil=new AddressUtil();
     }
     public HotMsg filterHotMsg(String message,String ip){
+    	if(this.containsFilterOutWord(message))return null;
         String[]sentences=this.cutSentence(message);
         if(sentences==null)return null;
         int length=sentences.length;
@@ -93,7 +94,7 @@ public class DealMsg {
 			if(term.getNatureStr().startsWith("n"))
 				nounCount++;
 		}
-		if (locKeyword != null && evtKeyword != null&&nounCount>1) {
+		if (locKeyword != null && evtKeyword != null&&nounCount>=1) {
 			List<String> resultList = new ArrayList<String>();
 			resultList.add(locKeyword);
 			resultList.add(evtKeyword);

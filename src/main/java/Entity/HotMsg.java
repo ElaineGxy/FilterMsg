@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class HotMsg {
 	private String  gId;
-	private String content;
 	private Timestamp publishtime;
 	private Long zhId;
 	private Long chatroomId;
@@ -32,13 +31,6 @@ public class HotMsg {
 		this.gId = id;
 	}
 
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
 
 	public Timestamp getPublishtime() {
 		return publishtime;
