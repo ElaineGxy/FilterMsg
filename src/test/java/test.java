@@ -13,7 +13,7 @@ public class test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MsgDAO msgDao=new MsgDAO();
-		String startTime="2017-08-02 12:00:00";
+		String startTime="2017-08-02 00:00:00";
 		String endTime="2017-08-04 16:00:00";
 		List<String> msgList=msgDao.getMessage(startTime, endTime,200000);
 		try {
