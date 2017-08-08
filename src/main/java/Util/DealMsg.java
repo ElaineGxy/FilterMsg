@@ -6,7 +6,6 @@ import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.splitWord.analysis.DicAnalysis;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -19,19 +18,16 @@ import java.util.regex.Pattern;
  */
 public class DealMsg {
     public MapUtil maps;
-//    public AddressUtil addressUtil;
     public DealMsg(){
         this.maps=MapUtil.getInstance();
-//        this.addressUtil=new AddressUtil();
     }
-    public HotMsg filterHotMsg(String message,String ip){
+    public HotMsg filterHotMsg(String message){
     	if(this.containsFilterOutWord(message))return null;
         String[]sentences=this.cutSentence(message);
         if(sentences==null)return null;
         int length=sentences.length;
         for(int i=0;i<length;i++){
             Result result=DicAnalysis.parse(sentences[i]);
-//            System.out.println("Result:"+result);
             List<String> locAndEvtList=this.haveLocationAndEvent(result);
             if(!this.containsFilterOutWord(sentences[i])&&locAndEvtList!=null&&locAndEvtList.size()==2&&!this.isQuestion(sentences[i])){
                 HotMsg hotMsg=new HotMsg(message);
@@ -54,16 +50,6 @@ public class DealMsg {
                 String eventClass=this.maps.trackEvent(event);
                 hotMsg.setEvt_class(eventClass);
                 hotMsg.setEvt_word(event);
-                /*try {
-                    List<String> address=this.addressUtil.getAddresses("ip="+ip,"utf-8");
-                    if(address==null)System.out.println("null");
-                    hotMsg.setMsg_send_province(address.get(0));
-                    hotMsg.setMsg_send_city(address.get(1));
-                    hotMsg.setMsg_send_district(address.get(2));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }*/
-                //取得message的ip地址
                 return hotMsg;
             }
         }
@@ -74,8 +60,7 @@ public class DealMsg {
 	 * get the location and event keyword for a message
 	 *
 	 *update: add the limit for the number of noun in a sentence
-	 * @param result:
-	 *            segmentation of a message
+	 * @param result: segmentation of a message
 	 * @return true if have event and location keyword else return false
 	 */
 	public List<String> haveLocationAndEvent(Result result) {
@@ -102,19 +87,6 @@ public class DealMsg {
 		}
 		return null;
 	}
-    
-	/**
-	 * judge whether a sentence contains filterout words or not
-	 * @param sentence
-	 * @return
-	 */
-/*	public boolean containsFilterOutWord(String sentence) {
-		Set<String> wordSet=this.maps.getFilterOutWord();
-		for(String word:wordSet) {
-			if(sentence.contains(word))return true;
-		}
-		return false;
-	}*/
 	
 	/**
 	 * 改进过滤词筛选
