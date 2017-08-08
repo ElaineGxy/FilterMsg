@@ -2,6 +2,7 @@ package Util;
 
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
+import org.apache.commons.lang.time.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

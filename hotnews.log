@@ -800,3 +800,115 @@ DEBUG main org.ansj.library.DicLibrary - begin init dic !
 INFO main org.ansj.library.DicLibrary - load dic use time:56 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
 INFO main org.ansj.library.DATDictionary - init core library ok use time : 527
 INFO main org.ansj.library.NgramLibrary - init ngram ok use time :409
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:41 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 675
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :641
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:48 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 543
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :409
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:30 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 517
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :413
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:27 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 546
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :421
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:34 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 572
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :479
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:36 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 466
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :397
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:71 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 641
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :439
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:51 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 608
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :416
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:51 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 590
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :428
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:5 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 611
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :431
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:5 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 624
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :420
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:6 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 629
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :462
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:42 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 139168
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :232356
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:44 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 613
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :447
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:38 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 508
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :445
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:45 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 550
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :454

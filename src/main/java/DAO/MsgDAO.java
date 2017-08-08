@@ -128,7 +128,7 @@ public class MsgDAO {
 	/**
 	 * 通过事件类型获取热点新闻
 	 * 
-	 * @param location
+	 * @param locationMap
 	 * @return
 	 */
 	public static List<HotMsg> getHotByEvt(String evt, String startTime, String endTime) {
@@ -261,5 +261,13 @@ public class MsgDAO {
 			}
 		}
 	}
+	
+/*	public static void regionData() {
+		MppJdbcPool_dbcp.MppJdbcPoolinit();
+		Connection connection=MppJdbcPool_dbcp.getConnection();
+		String sql="SELECT count(*) FROM tp_wxq_entire WHERE unix_timestamp(m_publish_time) BETWEEN unix_timestamp('date_sub(date(m_publish_time),INTERVAL 30 DAY)') "
+				+ "AND unix_timestamp('date(m_publish_time)') GROUP BY m_publish_time";
+		
+	}*/
 
 }
