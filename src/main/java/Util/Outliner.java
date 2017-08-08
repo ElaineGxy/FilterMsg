@@ -193,11 +193,9 @@ public class Outliner {
 	     *            点2 
 	     * @return 误差平方 
 	     */  
-	    private float errorSquare(float[] element, float[] center) {  
-	        float x = element[0] - center[0];  
-	        float y = element[1] - center[1];  
-	  
-	        float errSquare = x * x + y * y;  
+	    private float errorSquare(int element, int center) {  
+	    	int diff=element-center;
+	        float errSquare =diff*diff;  
 	  
 	        return errSquare;  
 	    }  
