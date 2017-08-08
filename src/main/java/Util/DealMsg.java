@@ -108,11 +108,31 @@ public class DealMsg {
 	 * @param sentence
 	 * @return
 	 */
-	public boolean containsFilterOutWord(String sentence) {
+/*	public boolean containsFilterOutWord(String sentence) {
 		Set<String> wordSet=this.maps.getFilterOutWord();
 		for(String word:wordSet) {
 			if(sentence.contains(word))return true;
 		}
+		return false;
+	}*/
+	
+	/**
+	 * 改进过滤词筛选
+	 */
+	public boolean containsFilterOutWord(String sentence) {
+		Set<String>wordSet=this.maps.getFilterOutWord();
+		for(String word:wordSet) {
+			String[] words=word.split(",");
+			boolean flag=true;
+			for(String sword:words) {
+				if(!sentence.contains(sword)) {
+					flag=false;
+					break;
+				}
+			}
+			if(flag)return true;
+		}
+		
 		return false;
 	}
     /**
