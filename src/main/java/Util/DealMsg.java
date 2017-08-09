@@ -31,14 +31,21 @@ public class DealMsg {
 		int length = sentences.length;
 
 		for (int i = 0; i < length; i++) {
-			List<String> resultList = new ArrayList<String>();
 			Result result = DicAnalysis.parse(sentences[i]);
 			List<String> locAndEvtList = this.haveLocationAndEvent(result);
 			if (!this.containsFilterOutWord(sentences[i]) && locAndEvtList != null && locAndEvtList.size() == 2
 					&& !this.isQuestion(sentences[i])) {
-				HotMsg hotMsg = new HotMsg(message);
+				HotMsg hotMsg = new HotMsg();
+				
+				//消息对应关键词
+				List<String>keywordList=new ArrayList<String>();
 				String location = locAndEvtList.get(0);
 				String event = locAndEvtList.get(1);
+				keywordList.add(location);
+				keywordList.add(event);
+				hotMsg.setKeyword(keywordList);
+				
+				//追溯上级地点和事件
 				String upperLocation = this.maps.trackLocation(location);
 				if (upperLocation == null) {
 					hotMsg.setMsg_province(locAndEvtList.get(0));
@@ -46,16 +53,12 @@ public class DealMsg {
 					String[] uppers = upperLocation.split(",");
 					if (uppers.length == 1) {
 						hotMsg.setMsg_province(uppers[0]);
-						hotMsg.setMsg_city(location);
 					} else {
-						hotMsg.setMsg_district(location);
-						hotMsg.setMsg_city(uppers[0]);
 						hotMsg.setMsg_province(uppers[1]);
 					}
 				}
 				String eventClass = this.maps.trackEvent(event);
 				hotMsg.setEvt_class(eventClass);
-				hotMsg.setEvt_word(event);
 				return hotMsg;
 			}
 		}

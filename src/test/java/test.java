@@ -13,9 +13,9 @@ public class test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MsgDAO msgDao=new MsgDAO();
-		String startTime="2017-08-02 00:00:00";
-		String endTime="2017-08-04 16:00:00";
-		List<String> msgList=msgDao.getMessage(startTime, endTime,200000);
+		String startTime="2017-07-31 00:00:00";
+		String endTime="2017-08-03 00:00:00";
+		List<String> msgList=msgDao.getMessage(startTime, endTime);
 		try {
 			FileWriter fileWriter=new FileWriter(new File("./msg.txt"));
 			BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);

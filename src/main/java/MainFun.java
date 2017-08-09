@@ -9,13 +9,14 @@ import java.util.List;
 import org.apache.commons.lang.time.StopWatch;
 
 import Entity.HotMsg;
+import Outliner.BoxPlots;
 import Util.DealMsg;
 
 
 public class MainFun {
 
 	public static void main(String[] args) throws Exception {
-		DealMsg dealMsg = new DealMsg();
+/*		DealMsg dealMsg = new DealMsg();
 
 		File file = new File("./msg.txt");
 		FileReader fileReader = new FileReader(file);
@@ -39,7 +40,13 @@ public class MainFun {
 		fileWriter.flush();
 		bufferedWriter.flush();
 		fileWriter.close();
-		bufferedWriter.close();
-
+		bufferedWriter.close();*/
+		String line="茂县山体滑坡不能去了王总";
+		DealMsg dealMsg=new DealMsg();
+		HotMsg hotMsg=dealMsg.filterHotMsg(line);
+		if(hotMsg!=null) {
+			System.out.println("province:"+hotMsg.getMsg_province()+"event class:"+hotMsg.getEvt_class()+"keyword:"+hotMsg.getKeyword().toString());
+		}else
+			System.out.println("hotmsg is null");
 	}
 }
