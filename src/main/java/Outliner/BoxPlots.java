@@ -34,7 +34,7 @@ public class BoxPlots {
 	 */
 	public boolean isOutliner() {
 		findQ();
-		System.out.println(this.currentData);
+//		System.out.println(this.currentData);
 		if(this.currentData>this.expUpper)return true;
 		return false;
 	}

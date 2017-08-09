@@ -53,11 +53,14 @@ public class DealMsg {
 					String[] uppers = upperLocation.split(",");
 					if (uppers.length == 1) {
 						hotMsg.setMsg_province(uppers[0]);
+						hotMsg.setMsg_city(location);
 					} else {
 						hotMsg.setMsg_province(uppers[1]);
+						hotMsg.setMsg_city(uppers[0]);
 					}
 				}
 				String eventClass = this.maps.trackEvent(event);
+				hotMsg.setEvt_word(event);
 				hotMsg.setEvt_class(eventClass);
 				return hotMsg;
 			}

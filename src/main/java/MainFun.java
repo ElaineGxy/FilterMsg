@@ -41,11 +41,11 @@ public class MainFun {
 		bufferedWriter.flush();
 		fileWriter.close();
 		bufferedWriter.close();*/
-		String line="茂县山体滑坡不能去了王总";
+		String line="四川九寨沟山体滑坡不能去了王总";
 		DealMsg dealMsg=new DealMsg();
 		HotMsg hotMsg=dealMsg.filterHotMsg(line);
 		if(hotMsg!=null) {
-			System.out.println("province:"+hotMsg.getMsg_province()+"event class:"+hotMsg.getEvt_class()+"keyword:"+hotMsg.getKeyword().toString());
+			System.out.println("province:"+hotMsg.getMsg_province()+",city:"+hotMsg.getMsg_city()+"event:"+hotMsg.getEvt_word()+"event class:"+hotMsg.getEvt_class()+"keyword:"+hotMsg.getKeyword().toString());
 		}else
 			System.out.println("hotmsg is null");
 	}
