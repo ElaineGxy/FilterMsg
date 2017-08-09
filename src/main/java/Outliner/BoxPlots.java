@@ -29,8 +29,8 @@ public class BoxPlots {
 		expLower=QL-1.5*IQR;
 	}
 	/**
-	 * 1：热点事件 2：热点事件转换为非热点事件 0：非热点事件
-	 * @return
+	 * judge whether this is a hot issue
+	 * @return true: is hot issue else return false
 	 */
 	public boolean isOutliner() {
 		findQ();

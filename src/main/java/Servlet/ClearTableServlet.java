@@ -1,4 +1,4 @@
-package Servlet;
+/*package Servlet;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -48,3 +48,4 @@ public class ClearTableServlet implements ServletContextListener {
 	}
 
 }
+*/
