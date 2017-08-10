@@ -102,7 +102,7 @@ public class DealMsg {
 			if (term.getNatureStr().equals("event")) {
 				evtKeyword = term.getName();
 			}
-			if (term.getNatureStr().startsWith("n"))
+			if (term.getNatureStr().startsWith("n")||term.getNatureStr().startsWith("v"))
 				nounCount++;
 		}
 		if (locKeyword != null && evtKeyword != null && nounCount >= 1) {
