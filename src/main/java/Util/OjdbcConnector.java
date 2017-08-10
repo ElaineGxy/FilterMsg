@@ -8,23 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-/**
- * 用于连接数据库
- * @author gaoxy
- *
- * 2017年8月3日
- */
-public class MppJdbcPool_dbcp {
+public class OjdbcConnector {
 	public static List<Connection> sessionList = new ArrayList<Connection>();
 	private static int MPPDBSIZE = 10;
-	private static String MPPDBUSER = "";
-	private static String MPPDBPASSWD = "";
-	private static String MPPDBURL = "";
-	private static String MPPDBDRIVER = "";
+	private static String ODBUSER = "";
+	private static String ODBPASSWD = "";
+	private static String ODBURL = "";
+	private static String ODBDRIVER = "";
 
-	public static void MppJdbcPoolinit() {
+	//静态代码块：加载变量值
+	static{
 		try {
-
 			Properties propget = new Properties();
 			try {
 				String relativelyPath = System.getProperty("user.dir");
@@ -36,15 +30,15 @@ public class MppJdbcPool_dbcp {
 				e.printStackTrace();
 			}
 			// DBUSER = "sysdba";
-			MPPDBUSER = propget.getProperty("MPPDBUSER");
+			ODBUSER = propget.getProperty("ODBUSER");
 			// DBPASSWD = "szoscar55";
-			MPPDBPASSWD = propget.getProperty("MPPDBPASSWD");
+			ODBPASSWD = propget.getProperty("ODBPASSWD");
 			// DBURL = "jdbc:oscar://localhost:2003/osrdb";
-			MPPDBURL = propget.getProperty("MPPDBURL");
+			ODBURL = propget.getProperty("ODBURL");
 			// DBDRIVER = "com.oscar.Driver";
-			MPPDBDRIVER = propget.getProperty("MPPDBDRIVER");
-			MPPDBSIZE = new Integer(propget.getProperty("MPPDBSIZE"));
-			Class.forName(MPPDBDRIVER);
+			ODBDRIVER = propget.getProperty("ODBDRIVER");
+			MPPDBSIZE = new Integer(propget.getProperty("ODBSIZE"));
+			Class.forName(ODBDRIVER);
 		} catch (Throwable e) {
 			throw new ExceptionInInitializerError(e);
 		}
@@ -52,16 +46,14 @@ public class MppJdbcPool_dbcp {
 
 	public static Connection getConnection() {
 		Connection s = null;
-
 		synchronized (sessionList) {
 			if (sessionList.size() > 0)
 				s = sessionList.remove(0);
 		}
 		if (s == null) {
-
 			try {
-				s = DriverManager.getConnection(MPPDBURL, MPPDBUSER,
-						MPPDBPASSWD);
+				s = DriverManager.getConnection(ODBURL, ODBUSER,
+						ODBPASSWD);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

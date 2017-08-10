@@ -4,13 +4,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.ansj.splitWord.analysis.DicAnalysis;
 import org.apache.commons.lang.time.StopWatch;
 
 import Entity.HotMsg;
 import Outliner.BoxPlots;
+import Outliner.BoxPlotsThread;
 import Util.DealMsg;
 
 
@@ -42,13 +45,22 @@ public class MainFun {
 		bufferedWriter.flush();
 		fileWriter.close();
 		bufferedWriter.close();*/
-		String line="四川山体滑坡不能去了王总";
+	/*	String line="四川山体滑坡不能去了王总";
 		System.out.println(DicAnalysis.parse(line));
 		DealMsg dealMsg=new DealMsg();
 		HotMsg hotMsg=dealMsg.filterHotMsg(line);
 		if(hotMsg!=null) {
 			System.out.println("province:"+hotMsg.getMsg_province()+",city:"+hotMsg.getMsg_city()+"event:"+hotMsg.getEvt_word()+"event class:"+hotMsg.getEvt_class()+"keyword:"+hotMsg.getKeyword().toString());
 		}else
-			System.out.println("hotmsg is null");
+			System.out.println("hotmsg is null");*/
+		List<Map<Integer, int[]>>dataEntries=new ArrayList<Map<Integer,int[]>>();
+		
+		BoxPlotsThread boxThread=new BoxPlotsThread();
+		boxThread.setDatas(dataEntries);
+		for(int i=0;i<4;i++) {
+			Thread thread=new Thread(boxThread);
+			thread.start();
+		}
+		
 	}
 }

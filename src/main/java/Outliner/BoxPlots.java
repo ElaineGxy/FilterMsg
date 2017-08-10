@@ -18,22 +18,22 @@ public class BoxPlots {
 	public void sort() {
 		Arrays.sort(data);
 	}
-	public void findQ() {
+	public void findQ(double ratio) {
 		this.sort();
 		int QLIndex=length/4;
 		int QUIndex=length-QLIndex;
 		QL=data[QLIndex];
 		QU=data[QUIndex];
 		IQR=QU-QL;
-		expUpper=QU+1.5*IQR;
-		expLower=QL-1.5*IQR;
+		expUpper=QU+ratio*IQR;
+		expLower=QL-ratio*IQR;
 	}
 	/**
 	 * judge whether this is a hot issue
 	 * @return true: is hot issue else return false
 	 */
 	public boolean isOutliner() {
-		findQ();
+		findQ(3);
 //		System.out.println(this.currentData);
 		if(this.currentData>this.expUpper)return true;
 		return false;
