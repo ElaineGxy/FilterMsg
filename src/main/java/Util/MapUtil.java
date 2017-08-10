@@ -434,6 +434,17 @@ public class MapUtil {
 		} else {
 			return this.location.get(location);
 		}
+		Iterator<Map.Entry<String, String>>iterator=this.location.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Map.Entry<String, String>entry=iterator.next();
+			String key=entry.getKey();
+			String value=entry.getValue();
+			if(key.contains(location)) {
+				if(value==null||value.length()==0)return key;
+				else return this.location.get(key);
+			}
+		}
+		
 		return null;
 	}
 

@@ -84,7 +84,7 @@ public class DealMsg {
 		int nounCount = 0;
 		for (Term term : termList) {
 			this.maps.updateHotWordMap(term.getName());
-			if (term.getNatureStr().equals("location")) {
+			if (term.getNatureStr().equals("location")||term.getNatureStr().equals("ns")) {
 				locKeyword = term.getName();
 			}
 			if (term.getNatureStr().equals("event")) {

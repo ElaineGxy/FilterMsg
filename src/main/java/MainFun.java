@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ansj.splitWord.analysis.DicAnalysis;
 import org.apache.commons.lang.time.StopWatch;
 
 import Entity.HotMsg;
@@ -41,7 +42,8 @@ public class MainFun {
 		bufferedWriter.flush();
 		fileWriter.close();
 		bufferedWriter.close();*/
-		String line="四川九寨沟山体滑坡不能去了王总";
+		String line="九寨沟山体滑坡不能去了王总";
+		System.out.println(DicAnalysis.parse(line));
 		DealMsg dealMsg=new DealMsg();
 		HotMsg hotMsg=dealMsg.filterHotMsg(line);
 		if(hotMsg!=null) {
