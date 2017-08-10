@@ -161,7 +161,7 @@ public class DealMsg {
 	 * @return:[]String
 	 */
 	public String[] cutSentence(String message) {
-		String regEx = "[？。！；!?.!;]";
+		String regEx = "[？。！；!?!;]";
 		Pattern pattern = Pattern.compile(regEx);
 		Matcher matcher = pattern.matcher(message);
 		String[] sentences = pattern.split(message);

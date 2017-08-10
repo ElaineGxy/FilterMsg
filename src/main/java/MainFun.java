@@ -44,7 +44,7 @@ public class MainFun {
 		bufferedWriter.flush();
 		fileWriter.close();
 		bufferedWriter.close();*/
-		String line="九寨沟地震20死";
+		String line="九寨沟发生7.0级地震 ";
 		System.out.println(DicAnalysis.parse(line));
 		DealMsg dealMsg=new DealMsg();
 		HotMsg hotMsg=dealMsg.filterHotMsg(line);
