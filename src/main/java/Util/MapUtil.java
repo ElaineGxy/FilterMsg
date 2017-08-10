@@ -30,14 +30,23 @@ import org.slf4j.LoggerFactory;
 public class MapUtil {
 	private final static Logger logger = LoggerFactory.getLogger(MapUtil.class);
 
-	static {
+/*	static {
 		Properties fileProperty = PropertyUtil.getFilePathProperty();
 		if (fileProperty == null) {
 			logger.info("FileProperty is null");
 		}
 
 		String dictPath = MapUtil.class.getResource(fileProperty.getProperty("DICPATH")).getPath();
+		System.out.println(dictPath);
 		File dictFile = new File(dictPath);
+		if(!dictFile.exists()) {
+			try {
+				dictFile.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		FileWriter dictFileWriter = null;
 		try {
 			dictFileWriter = new FileWriter(dictFile);
@@ -97,7 +106,7 @@ public class MapUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-	}
+	}*/
 
 	private static class SingleHelper {
 		static final MapUtil INSTANCE = new MapUtil();

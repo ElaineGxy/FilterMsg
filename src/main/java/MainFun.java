@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.ansj.splitWord.analysis.DicAnalysis;
-import org.apache.commons.lang.time.StopWatch;
 
 import Entity.HotMsg;
 import Outliner.BoxPlots;
@@ -45,22 +44,26 @@ public class MainFun {
 		bufferedWriter.flush();
 		fileWriter.close();
 		bufferedWriter.close();*/
-	/*	String line="四川山体滑坡不能去了王总";
+		String line="九寨沟地震20死";
 		System.out.println(DicAnalysis.parse(line));
 		DealMsg dealMsg=new DealMsg();
 		HotMsg hotMsg=dealMsg.filterHotMsg(line);
 		if(hotMsg!=null) {
 			System.out.println("province:"+hotMsg.getMsg_province()+",city:"+hotMsg.getMsg_city()+"event:"+hotMsg.getEvt_word()+"event class:"+hotMsg.getEvt_class()+"keyword:"+hotMsg.getKeyword().toString());
 		}else
-			System.out.println("hotmsg is null");*/
-		List<Map<Integer, int[]>>dataEntries=new ArrayList<Map<Integer,int[]>>();
+			System.out.println("hotmsg is null");
+/*		int[]data= {5,4,1,2,9,0,6,9,22};
+		BoxPlots box=new BoxPlots(data);
+		System.out.println(box.isOutliner());*/
+		
+/*		List<Map<Integer, int[]>>dataEntries=new ArrayList<Map<Integer,int[]>>();
 		
 		BoxPlotsThread boxThread=new BoxPlotsThread();
 		boxThread.setDatas(dataEntries);
 		for(int i=0;i<4;i++) {
 			Thread thread=new Thread(boxThread);
 			thread.start();
-		}
+		}*/
 		
 	}
 }

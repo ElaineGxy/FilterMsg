@@ -19,8 +19,8 @@ public class HotMsgDAO {
 	
 	
 	//从当前时间
-	public List<Map<Integer,int[]>> getDataByHours(){
+/*	public List<Map<Integer,int[]>> getDataByHours(){
 		
-	}
+	}*/
 	
 }

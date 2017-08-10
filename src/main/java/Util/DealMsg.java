@@ -45,13 +45,14 @@ public class DealMsg {
 
 				// 消息对应关键词
 				List<String> keywordList = new ArrayList<String>();
-				String location = locAndEvtList.get(2);
+				String locationKeyword = locAndEvtList.get(2);
 				String event = locAndEvtList.get(1);
-				keywordList.add(location);
+				keywordList.add(locationKeyword);
 				keywordList.add(event);
 				hotMsg.setKeyword(keywordList);
 
 				// 追溯上级地点和事件
+				String location=locAndEvtList.get(0);
 				String upperLocation = this.maps.trackLocation(location);
 				if (upperLocation == null) {
 					hotMsg.setMsg_province(locAndEvtList.get(0));
