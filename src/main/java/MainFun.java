@@ -42,7 +42,7 @@ public class MainFun {
 		bufferedWriter.flush();
 		fileWriter.close();
 		bufferedWriter.close();*/
-		String line="九寨沟山体滑坡不能去了王总";
+		String line="四川山体滑坡不能去了王总";
 		System.out.println(DicAnalysis.parse(line));
 		DealMsg dealMsg=new DealMsg();
 		HotMsg hotMsg=dealMsg.filterHotMsg(line);

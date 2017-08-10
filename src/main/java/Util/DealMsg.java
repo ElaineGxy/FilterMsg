@@ -85,7 +85,10 @@ public class DealMsg {
 		for (Term term : termList) {
 			this.maps.updateHotWordMap(term.getName());
 			if (term.getNatureStr().equals("location")||term.getNatureStr().equals("ns")) {
+				//在map中进行地点同名转换
 				locKeyword = term.getName();
+				locKeyword=this.maps.locationConvert(locKeyword);
+				
 			}
 			if (term.getNatureStr().equals("event")) {
 				evtKeyword = term.getName();

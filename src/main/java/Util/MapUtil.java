@@ -434,17 +434,24 @@ public class MapUtil {
 		} else {
 			return this.location.get(location);
 		}
+		
+		return null;
+	}
+	/**
+	 * convert location: e.g. 四川->四川省
+	 * @param locationWord
+	 * @return
+	 */
+	public String locationConvert(String locationWord) {
+		if(this.location.containsKey(locationWord))return locationWord;
 		Iterator<Map.Entry<String, String>>iterator=this.location.entrySet().iterator();
 		while(iterator.hasNext()) {
 			Map.Entry<String, String>entry=iterator.next();
 			String key=entry.getKey();
-			String value=entry.getValue();
-			if(key.contains(location)) {
-				if(value==null||value.length()==0)return key;
-				else return this.location.get(key);
+			if(key.contains(locationWord)) {
+				return key;
 			}
 		}
-		
 		return null;
 	}
 
