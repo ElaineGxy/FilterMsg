@@ -22,8 +22,14 @@ public class DealMsg {
 		this.maps = MapUtil.getInstance();
 	}
 
+	/**
+	 * judge whether this message is a hot issue
+	 * 
+	 * @param message
+	 * @return a HotMsg object if this message is a hot issue else return null
+	 */
 	public HotMsg filterHotMsg(String message) {
-		if (this.containsFilterOutWord(message)||message.length()>200||message.length()<5)
+		if (this.containsFilterOutWord(message) || message.length() > 200 || message.length() < 5)
 			return null;
 		String[] sentences = this.cutSentence(message);
 		if (sentences == null)
@@ -33,19 +39,19 @@ public class DealMsg {
 		for (int i = 0; i < length; i++) {
 			Result result = DicAnalysis.parse(sentences[i]);
 			List<String> locAndEvtList = this.haveLocationAndEvent(result);
-			if (!this.containsFilterOutWord(sentences[i]) && locAndEvtList != null && locAndEvtList.size() == 2
+			if (!this.containsFilterOutWord(sentences[i]) && locAndEvtList != null && locAndEvtList.size() == 3
 					&& !this.isQuestion(sentences[i])) {
 				HotMsg hotMsg = new HotMsg();
-				
-				//消息对应关键词
-				List<String>keywordList=new ArrayList<String>();
-				String location = locAndEvtList.get(0);
+
+				// 消息对应关键词
+				List<String> keywordList = new ArrayList<String>();
+				String location = locAndEvtList.get(2);
 				String event = locAndEvtList.get(1);
 				keywordList.add(location);
 				keywordList.add(event);
 				hotMsg.setKeyword(keywordList);
-				
-				//追溯上级地点和事件
+
+				// 追溯上级地点和事件
 				String upperLocation = this.maps.trackLocation(location);
 				if (upperLocation == null) {
 					hotMsg.setMsg_province(locAndEvtList.get(0));
@@ -73,22 +79,24 @@ public class DealMsg {
 	 *
 	 * update: add the limit for the number of noun in a sentence
 	 * 
-	 * @param result:
-	 *            segmentation of a message
+	 * @param result:segmentation
+	 *            of a message
 	 * @return true if have event and location keyword else return false
 	 */
 	public List<String> haveLocationAndEvent(Result result) {
 		List<Term> termList = result.getTerms();
 		String locKeyword = null;
 		String evtKeyword = null;
+		String trueLocation = null;
 		int nounCount = 0;
 		for (Term term : termList) {
 			this.maps.updateHotWordMap(term.getName());
-			if (term.getNatureStr().equals("location")||term.getNatureStr().equals("ns")) {
-				//在map中进行地点同名转换
+			if (term.getNatureStr().equals("location") || term.getNatureStr().equals("ns")) {
 				locKeyword = term.getName();
-				locKeyword=this.maps.locationConvert(locKeyword);
-				
+				// 保留消息中实际的地名
+				trueLocation = locKeyword;
+				// 在map中进行地点同名转换
+				locKeyword = this.maps.locationConvert(locKeyword);
 			}
 			if (term.getNatureStr().equals("event")) {
 				evtKeyword = term.getName();
@@ -100,14 +108,17 @@ public class DealMsg {
 			List<String> resultList = new ArrayList<String>();
 			resultList.add(locKeyword);
 			resultList.add(evtKeyword);
+			resultList.add(trueLocation);
 			return resultList;
 		}
 		return null;
 	}
 
-	/**
-	 * 改进过滤词筛选
-	 */
+/**
+ * judge whether sentence contains filter out word
+ * @param sentence
+ * @return: return true if it contains... else return false
+ */
 	public boolean containsFilterOutWord(String sentence) {
 		Set<String> wordSet = this.maps.getFilterOutWord();
 		for (String word : wordSet) {
@@ -148,7 +159,6 @@ public class DealMsg {
 	 *            a text which may contains many sentences
 	 * @return:[]String
 	 */
-
 	public String[] cutSentence(String message) {
 		String regEx = "[？。！；!?.!;]";
 		Pattern pattern = Pattern.compile(regEx);
