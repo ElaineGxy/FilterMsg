@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class OjdbcConnector {
+public class JdbcConnector {
 	public static List<Connection> sessionList = new ArrayList<Connection>();
 	private static int MPPDBSIZE = 10;
 	private static String ODBUSER = "";
@@ -29,7 +29,7 @@ public class OjdbcConnector {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			// DBUSER = "sysdba";
+/*			// DBUSER = "sysdba";
 			ODBUSER = propget.getProperty("ODBUSER");
 			// DBPASSWD = "szoscar55";
 			ODBPASSWD = propget.getProperty("ODBPASSWD");
@@ -38,6 +38,11 @@ public class OjdbcConnector {
 			// DBDRIVER = "com.oscar.Driver";
 			ODBDRIVER = propget.getProperty("ODBDRIVER");
 			MPPDBSIZE = new Integer(propget.getProperty("ODBSIZE"));
+			Class.forName(ODBDRIVER);*/
+			ODBUSER = propget.getProperty("MYUSER");
+			ODBPASSWD = propget.getProperty("ODBPASSWD");
+			ODBURL = propget.getProperty("MYURL");
+			ODBDRIVER = propget.getProperty("MYDRIVER");
 			Class.forName(ODBDRIVER);
 		} catch (Throwable e) {
 			throw new ExceptionInInitializerError(e);
@@ -53,7 +58,7 @@ public class OjdbcConnector {
 		if (s == null) {
 			try {
 				s = DriverManager.getConnection(ODBURL, ODBUSER,
-						ODBPASSWD);
+						"gaoxiyan4429");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

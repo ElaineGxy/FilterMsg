@@ -10,10 +10,14 @@ public class BoxPlots {
 	public double expUpper;
 	public double expLower;
 	public int currentData;
+	public BoxPlots() {}
 	public BoxPlots(int[]data) {
 		this.data=data;
 		currentData=data[data.length-1];
 		this.length=this.data.length;
+	}
+	public void setData(int[]data) {
+		this.data=data;
 	}
 	public void sort() {
 		Arrays.sort(data);
@@ -28,6 +32,7 @@ public class BoxPlots {
 		expUpper=QU+ratio*IQR;
 		expLower=QL-ratio*IQR;
 	}
+	
 	/**
 	 * judge whether this is a hot issue
 	 * @return true: is hot issue else return false

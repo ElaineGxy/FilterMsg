@@ -278,3 +278,74 @@ DEBUG main org.ansj.library.DicLibrary - begin init dic !
 INFO main org.ansj.library.DicLibrary - load dic use time:35 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
 INFO main org.ansj.library.DATDictionary - init core library ok use time : 578
 INFO main org.ansj.library.NgramLibrary - init ngram ok use time :406
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:40 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 581
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :464
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:42 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 557
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :478
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:41 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 541
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :423
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:38 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 533
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Supplied authorities: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.Utils - Resolved authority: 10.144.16.17:23400
+INFO main cn.ac.iie.jdbc.DBrokerI.HiveConnection - Will try to open client transport with JDBC Uri: jdbc.iie.DBroker://10.144.16.17:23400/msg_db;auth=noSasl
+INFO main org.ansj.util.MyStaticValue - init dic to env value is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR main org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\project\jProject\FilterMsg\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG main org.ansj.library.DicLibrary - begin init dic !
+INFO main org.ansj.library.DicLibrary - load dic use time:42 path is : jar://org.ansj.dic.DicReader|/library/userLibrary.dic
+INFO main org.ansj.library.DATDictionary - init core library ok use time : 579
+INFO main org.ansj.library.NgramLibrary - init ngram ok use time :468

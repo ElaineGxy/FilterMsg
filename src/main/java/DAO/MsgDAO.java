@@ -1,7 +1,8 @@
-/*package DAO;
+package DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -47,19 +48,19 @@ public class MsgDAO {
 	}
 
 
-	*//**
+	/**
 	 * 
 	 * @param startTime
 	 *            2017-08-01 00:00:00
 	 * @param endTime
 	 *            2017-08-01 23:00:00
-	 *//*
-	public static List<String> getMessage(String startTime, String endTime) {
+	 */
+	public List<String> getMessage(String startTime, String endTime) {
 		MppJdbcPool_dbcp.MppJdbcPoolinit();
 		Connection connection = MppJdbcPool_dbcp.getConnection();
 		List<String> msgList = new ArrayList<String>();
 		String sql = "SELECT * FROM tp_wxq_entire WHERE unix_timestamp(m_publish_time) BETWEEN unix_timestamp('"
-				+ startTime + "') AND unix_timestamp('" + endTime + "')";
+				+ startTime + "') AND unix_timestamp('" + endTime + "') LIMIT 100";
 		if (connection != null) {
 			try {
 				PreparedStatement prepareStatement = connection.prepareStatement(sql);
@@ -80,13 +81,13 @@ public class MsgDAO {
 		return msgList;
 	}
 
-	*//**
+	/**
 	 * 通过地点信息获取热点新闻
 	 * 
 	 * @param location
 	 * @return
-	 *//*
-	public static List<HotMsg> getHotByLoc(String location,String startTime,String endTime) {
+	 */
+/*	public static List<HotMsg> getHotByLoc(String location,String startTime,String endTime) {
 		MppJdbcPool_dbcp.MppJdbcPoolinit();
 		Connection connection = MppJdbcPool_dbcp.getConnection();
 		List<HotMsg> msgList = new ArrayList<HotMsg>();
@@ -123,9 +124,9 @@ public class MsgDAO {
 			logger.info("connection is null");
 		}
 		return msgList;
-	}
+	}*/
 
-	*//**
+/*	*//**
 	 * 通过事件类型获取热点新闻
 	 * 
 	 * @param locationMap
@@ -169,14 +170,14 @@ public class MsgDAO {
 			logger.info("connection is null");
 		}
 		return msgList;
-	}
+	}*/
 
-	*//**
+	/**
 	 * return all hot message ordered by time(publish time)
 	 * 
 	 * @return
-	 *//*
-	public static List<HotMsg> getHotMsg(String startTime, String endTime) {
+	 */
+/*	public static List<HotMsg> getHotMsg(String startTime, String endTime) {
 		MppJdbcPool_dbcp.MppJdbcPoolinit();
 		Connection connection = MppJdbcPool_dbcp.getConnection();
 		List<HotMsg> msgList = new ArrayList<HotMsg>();
@@ -214,14 +215,14 @@ public class MsgDAO {
 		}
 		return msgList;
 
-	}
+	}*/
 	
-	*//**
+	/**
 	 * insert hot message
 	 * 
 	 * @param hotMsg
-	 *//*
-	public static void insertHotMsg(HotMsg hotMsg) {
+	 */
+/*	public static void insertHotMsg(HotMsg hotMsg) {
 		MppJdbcPool_dbcp.MppJdbcPoolinit();
 		Connection connection = MppJdbcPool_dbcp.getConnection();
 		String sql = "insert into tp_wxq_hot(msg_content,msg_province,msg_city,msg_district,evt_class,"
@@ -240,11 +241,11 @@ public class MsgDAO {
 		} else {
 			logger.info("connection is null");
 		}
-	}
+	}*/
 
-	*//**
+	/**
 	 * 将热点消息的表格清空
-	 *//*
+	 */
 	public static void clearHotMsg() {
 		MppJdbcPool_dbcp.MppJdbcPoolinit();
 		Connection connection = MppJdbcPool_dbcp.getConnection();
@@ -261,6 +262,38 @@ public class MsgDAO {
 			}
 		}
 	}
+	
 
+	public static List<HotMsg> getAvgHeat() {
+		MppJdbcPool_dbcp.MppJdbcPoolinit();
+		Connection connection = MppJdbcPool_dbcp.getConnection();
+		List<HotMsg> msgList = new ArrayList<HotMsg>();
+		
+		String sql="SELECT HOUR(m_publish_time)as publish_hour,COUNT(m_content)as contentSum FROM tp_wxq_entire WHERE (m_content like '%四川%地震%' OR m_content like '%九寨沟%地震') AND UNIX_TIMESTAMP(m_publish_time) BETWEEN '2017-08-05 00:00:00' AND '2017-08-08 00:00:00' GROUP BY HOUR(m_publish_time) ORDER BY HOUR(m_publish_time)";
+		System.out.println("sql:"+sql);
+		if (connection != null) {
+			try {
+				PreparedStatement prepareStatement = connection.prepareStatement(sql);
+				ResultSet rs = prepareStatement.executeQuery();
+				while (rs.next()) {
+					System.out.println(rs.getInt("publish_hour"));
+					System.out.println(rs.getInt("contentSum"));
+				}
+				rs.close();
+				prepareStatement.close();
+				MppJdbcPool_dbcp.closeConn(connection);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			logger.info("Connection is null!");
+		}
+		return msgList;
+
+	}
+	public static void main(String[]args) {
+		MsgDAO msgDao=new MsgDAO();
+		msgDao.getAvgHeat();
+	}
+	
 }
-*/
