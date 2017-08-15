@@ -1,29 +1,38 @@
 package Outliner;
 import java.util.Arrays;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+/**
+ * 需要将数据减去均值之后在进行箱型图分析
+ * @author gaoxy
+ *
+ * 2017年8月14日
+ */
 public class BoxPlots {
-	public int[]data;
-	public int QL;
-	public int QU;
-	public int IQR;
+	public double[]data;//减去均值后的数据
+	public double QL;
+	public double QU;
+	public double IQR;
 	public int length;
 	public double expUpper;
 	public double expLower;
-	public int currentData;
+	public double currentData;
 	public BoxPlots() {}
-	public BoxPlots(int[]data) {
+	public BoxPlots(double[]data) {
 		this.data=data;
 		currentData=data[data.length-1];
 		this.length=this.data.length;
 	}
-	public void setData(int[]data) {
+	public void setData(double[]data) {
 		this.data=data;
+		this.length=data.length;
+		this.currentData=data[data.length-1];
 	}
 	public void sort() {
 		Arrays.sort(data);
 	}
 	public void findQ(double ratio) {
-		this.sort();
+		Arrays.sort(this.data);
 		int QLIndex=length/4;
 		int QUIndex=length-QLIndex;
 		QL=data[QLIndex];
@@ -38,7 +47,7 @@ public class BoxPlots {
 	 * @return true: is hot issue else return false
 	 */
 	public boolean isOutliner() {
-		findQ(3);
+		findQ(1.5);
 //		System.out.println(this.currentData);
 		if(this.currentData>this.expUpper)return true;
 		return false;
