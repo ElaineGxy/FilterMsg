@@ -18,25 +18,27 @@ public class BoxPlots {
 	public double expLower;
 	public double currentData;
 	public BoxPlots() {}
-	public BoxPlots(double[]data) {
+	public BoxPlots(double[]data,double currentData) {
 		this.data=data;
-		currentData=data[data.length-1];
+		this.currentData=currentData;
 		this.length=this.data.length;
 	}
-	public void setData(double[]data) {
+	public void setData(double[]data,double currentData) {
 		this.data=data;
 		this.length=data.length;
-		this.currentData=data[data.length-1];
+		this.currentData=currentData;
 	}
 	public void sort() {
 		Arrays.sort(data);
 	}
 	public void findQ(double ratio) {
 		Arrays.sort(this.data);
-		int QLIndex=length/4;
-		int QUIndex=length-QLIndex;
-		QL=data[QLIndex];
-		QU=data[QUIndex];
+		double QLIndexF=(this.length+1)/4.0-1;
+		double QUIndexF=(this.length+1)/4.0*3-1;
+		int QLIndex=(int) Math.floor(QLIndexF);
+		int QUIndex=(int) Math.floor(QUIndexF);
+		QL=data[QLIndex]+(QLIndexF-QLIndex)*(data[QLIndex+1]-data[QLIndex]);
+		QU=data[QUIndex]+(QUIndexF-QUIndex)*(data[QUIndex+1]-data[QUIndex]);
 		IQR=QU-QL;
 		expUpper=QU+ratio*IQR;
 		expLower=QL-ratio*IQR;
@@ -48,7 +50,6 @@ public class BoxPlots {
 	 */
 	public boolean isOutliner() {
 		findQ(1.5);
-//		System.out.println(this.currentData);
 		if(this.currentData>this.expUpper)return true;
 		return false;
 	}
